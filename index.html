@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Practice-3</title>
+    <link rel="stylesheet" href="reset.css">
+    <script src="main.js"></script>
+    <style>
+        .canvas-wraper{
+            width: 100%;
+        }
+        canvas{
+            margin: 50px auto 0;
+            display: block;
+        }
+        .form{
+            display: flex;
+            width: 90%;
+            margin: 0 auto;
+            align-items: center;
+        }
+        #info{
+            visibility: hidden;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <form class="form">
+            <label>Input function <br/>(tg(x) - tan(x), arcsin(x) - asin(x), arccos() - acos(x)) </label>
+            <input type="text" placeholder="y = f(x)" id="userFunction">
+            <label>Enter an interval of the function:</label>
+            <input type="text" placeholder="min x" id="minX">
+            <input type="text" placeholder="max x" id="maxX">
+            <button id="drowFunction" type="button">DROW!</button>
+            <button id="clear" type="button">Clear</button>
+        </form>
+    </div>
+    <p id="info">If you want to add new function's ghraph, change the function and press DRAW!</p>
+    <div class="canvas-wrapper">
+          <canvas id="canvas"></canvas>
+    </div>
+</body>
+</html>
