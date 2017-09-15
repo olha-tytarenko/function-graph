@@ -1,47 +1,133 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Practice-3</title>
-    <link rel="stylesheet" href="reset.css">
-    <script src="main.js"></script>
-    <style>
-        .canvas-wraper{
-            width: 100%;
-        }
-        canvas{
-            margin: 50px auto 0;
-            display: block;
-        }
-        .form{
-            display: flex;
-            width: 90%;
-            margin: 0 auto;
-            align-items: center;
-        }
-        #info{
-            visibility: hidden;
-            text-align: center;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Practice-3</title>
+  <link rel="stylesheet" href="reset.css">
+  <script src="main.js"></script>
+  <style>
+    .canvas-wraper {
+      width: 100%;
+    }
+
+    canvas {
+      margin: 50px auto 0;
+      display: block;
+    }
+
+    .form {
+      display: flex;
+      width: 90%;
+      margin: 0 auto;
+      align-items: flex-end;
+      flex-wrap: wrap;
+      justify-content: space-around;
+    }
+
+    #info {
+      visibility: hidden;
+      text-align: center;
+    }
+
+    .line {
+      flex: 1 1 100%;
+      display: flex;
+    }
+
+    .line label {
+      flex: 0 1 30%;
+    }
+
+    p {
+      padding: 10px;
+    }
+
+    strong {
+      text-transform: uppercase;
+    }
+
+    .info-2 {
+      font-family: 'Arial', serif;
+      font-size: 20px;
+      display: none;
+      text-transform: uppercase;
+      color: crimson;
+    }
+
+    #userFunction {
+      width: 100%;
+    }
+
+    #workWithServer {
+      display: flex;
+      justify-content: space-around;
+    }
+
+    ul li{
+      padding-left: 30px;
+    }
+  </style>
 </head>
+
 <body>
-    <div>
-        <form class="form">
-            <label>Input function <br/>(tg(x) - tan(x), arcsin(x) - asin(x), arccos() - acos(x)) </label>
-            <input type="text" placeholder="y = f(x)" id="userFunction">
-            <label>Enter an interval of the function:</label>
-            <input type="text" placeholder="min x" id="minX">
-            <input type="text" placeholder="max x" id="maxX">
-            <button id="drowFunction" type="button">DROW!</button>
-            <button id="clear" type="button">Clear</button>
-        </form>
-    </div>
-    <p id="info">If you want to add new function's ghraph, change the function and press DRAW!</p>
-    <div class="canvas-wrapper">
-          <canvas id="canvas"></canvas>
-    </div>
+  <div>
+    <form class="form" data-current-graph="">
+      <div class="line">
+        <label>Input function <br/>(tg(x) - tan(x), arcsin(x) - asin(x), arccos() - acos(x)) </label>
+        <input type="text" placeholder="y = f(x)" id="userFunction" value="sin(x)">
+      </div>
+      <div class="line">
+        <label>Enter an interval of the function:</label>
+        <input type="text" placeholder="min x" id="minX" value="-10">
+        <input type="text" placeholder="max x" id="maxX" value="10">
+      </div>
+
+      <button id="drowFunction" type="button">DROW!</button>
+      <button id="clear" type="button">Clear</button>
+      <div>
+        <h3>Choose the color:</h3>
+        <input type="color" id="color">
+      </div>
+      <div>
+        <h3>Thickness</h3>
+        <input type="number" id="thickness" value="0.5" step="0.1">
+      </div>
+      <div>
+        <label>graph name<input type="text" id="graphName" value="Name"></label>
+      </div>
+    </form>
+  </div>
+  <p id="info">If you want to add new function's ghraph, change the function and press DRAW!</p>
+  <p>
+    How to use it:
+    <ul>
+      <li>1) input function's data;</li>
+      <li>2) press 'DROW!' button;</li>
+      <li>3) If you want to add new function's ghraph, change the function and press 'DRAW!' again;</li>
+      <li>4) to show all functions from the server ptess 'Get all graphs from server';</li>
+      <li>5) to save curren function's data at the server press 'Save current graphs' (notice! the name of the function must
+        be unique);</li>
+      <li>6) to change the function's data from the list below, click on this function, change data and press 'Change graph';</li>
+      <li>7) to remove graph from th server, select the function from list below and click 'Delete current graph'.</li>
+    </ul>
+  </p>
+  <div id="workWithServer">
+    <button type="button" id="getAll">Get all graphs from server</button>
+    <button type="button" id="save">Save current graphs</button>
+    <button type="button" id="change">Change graph</button>
+    <button type="button" id="remove">Delete current graph</button>
+  </div>
+  <h2 class="info-2">To draw graphs below, just click on it and press button 'DROW!'</h2>
+  <div id="graphsList">
+
+  </div>
+
+  <div class="canvas-wrapper">
+    <canvas id="canvas"></canvas>
+  </div>
 </body>
+
 </html>
